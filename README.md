@@ -1,70 +1,71 @@
-# HotDetector(全网热门探测仪)
-全网热门探测仪一款帮助用户自动提取微博热搜、知乎热榜、百度实时热点条目中与特定领域（科技、娱乐、体育、自定义）有关内容的实用App。
+# HotDetector (Heated Topic Detector for Chinese Social Media)
 
-它使用Java SE 8开发。
+HotDetector is a practical application that helps users automatically extract content related to specific domains (Technology, Entertainment, Sports, Custom) from Weibo's hot search, Zhihu's hot list, and Baidu's real-time hot topics.
 
-本应用的开发者是北京大学信息科学技术学院本科生**徐为伯(Weibo Xu)、赵泠然(Lingran Zhao)、谢一平(Yiping Xie)**。
+It is developed using Java SE 8.
 
-## 使用方法
+The developers of this application are undergraduate students from the School of Information Science and Technology at Peking University: **Weibo Xu**, **Lingran Zhao**, and **Yiping Xie**.
 
-**点击“探测科技/体育/娱乐/自定义热门”按钮即可开始探测。**
+## Usage
 
-与选定领域有关的所有热门条目会显示在界面上，点击即可在浏览器中打开查看。
+Click the buttons labeled "探测科技/体育/娱乐/自定义热门" to start detecting hot topics in the selected domain.
 
-知乎热榜的相关图片会被显示在界面上，点击即可在浏览器中打开查看大图。
+All hot items related to the chosen domain will be displayed on the interface. Click on them to open and view in your browser.
 
-点击标题栏的“热搜”“热榜”“实时热点”可以直接进入微博热搜、知乎热榜、百度实时热点页面查看所有热门条目。
+Images related to Zhihu's hot list will be displayed on the interface. Click on them to open and view the full-sized image in your browser.
 
-点击“检查词库更新”按钮可以检查云端词库是否有更新。**事实上，在每次应用打开时，它都会自动检查更新。**
+Clicking on the titles "热搜" "热榜" "实时热点" in the header will directly take you to the Weibo hot search, Zhihu hot list, and Baidu real-time hot topics pages to view all hot items.
 
-点击“管理词库”按钮以编辑词库。
+Click the "检查词库更新" button to check if there are updates in the cloud-based word library. In fact, it automatically checks for updates every time you open the application.
 
-点击“帮助”按钮以获得更多信息。
+Click the "管理词库" button to edit the word library.
 
-## 基本原理
+Click the "帮助" button to get more information.
 
-**对每一个领域，都有一个领域词库、一个领域屏蔽词库。**
+## Basic Principles
 
-在探测过程中，本应用会将网络热门条目自动与所选中领域的词库对照，
+For each domain, there is a domain word library and a domain blocklist.
 
-含有领域词库中词汇且不含有领域屏蔽词库中词汇的，即被认为与该领域有关。
+During the detection process, this application will automatically compare the network's hot items with the word library of the selected domain.
 
-**在每次打开本应用时，都会与云端服务器通信以检查词库是否有更新；**
+Items containing vocabulary from the domain word library and not containing vocabulary from the domain blocklist are considered related to that domain.
 
-如有更新，将下载新版本的词库文件。
+Each time you open this application, it communicates with the cloud server to check if the word library has been updated.
 
-## 源代码结构
+If there are updates, it will download the new version of the word library file.
 
-分为**UI层、业务逻辑层和数据访问层**。
+## Source Code Structure
 
-### UI层
+It is divided into three layers: **UI layer, Business Logic layer, and Data Access layer**.
 
-**MainFrame.java**: 主窗口
+### UI Layer
 
-**WordBagManagerDialog**.java: 词库管理窗口
+**MainFrame.java**: Main window
 
-**WordBagUpdate**.java: 词库升级对话框
+**WordBagManagerDialog.java**: Word library management window
 
-### 业务逻辑层
+**WordBagUpdate.java**: Word library update dialog
 
-**Main.java**: 主函数所在文件
+### Business Logic Layer
 
-**Warning.java**: 警告信息
+**Main.java**: Main function file
 
-**Field.java**: 对领域的枚举
+**Warning.java**: Warning messages
 
-**CurrentField.java**: 当前选定的领域
+**Field.java**: Enumeration for domains
 
-**WordBagUpdater.java**: 词库升级
+**CurrentField.java**: Currently selected domain
 
-**HotItemsParser.java**: 判断热门条目是否与当前选定领域相关
+**WordBagUpdater.java**: Word library update
 
-### 数据访问层
+**HotItemsParser.java**: Determine if hot items are related to the currently selected domain
 
-**Detector.java**: 爬虫，读取热门条目
+### Data Access Layer
 
-**HotItem.java**: 封装热门条目
+**Detector.java**: Web crawler, reads hot items
 
-**Config.java**: 封装用户配置信息
+**HotItem.java**: Encapsulates hot items
 
-**WordBagManager.java**: 管理、编辑词库
+**Config.java**: Encapsulates user configuration information
+
+**WordBagManager.java**: Manages and edits the word library
